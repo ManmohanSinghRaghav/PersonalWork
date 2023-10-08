@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cubes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #050505;
+        }
+
+        .cube {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg);
+            animation: animate 10s linear infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotateX(-30deg) rotateY(360deg);
+            }
+
+            100% {
+                transform: rotateX(-30deg) rotateY(0deg);
+            }
+        }
+
+        .cube div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .cube div span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+        }
+
+        .top {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 300px;
+            height: 300px;
+            transform: rotateX(90deg) translateZ(150px);
+        }
+
+        .top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            transform: translateZ(-370px);
+            filter: blur(40px);
+        }
+
+        table{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background-color: #050505;
+        }
+        table tr td{
+            margin: 0;
+            padding: 0;
+            border-radius: 10%;
+            border: 4px outset;
+        }
+        .blue table td{
+            background-color: blue;
+            border-color: blue;
+        }
+        .red table td{
+            background-color: red;
+            border-color: red;
+        }
+        .green table td{
+            background-color: green;
+            border-color: green;
+        }
+        .white table td{
+            background-color: white;
+            border-color: white;
+        }
+        
+        .top table td{
+            background-color: yellow;
+            border-color: yellow;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="cube">
+        <div class="top">
+            <table>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <span class="blue" style="--i:0">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </span>
+            <span class="green" style="--i:1">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </span>
+            <span class="red" style="--i:2">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </span>
+            <span class="white" style="--i:3">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>

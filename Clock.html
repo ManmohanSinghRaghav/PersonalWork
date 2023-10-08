@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CLOCK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: bisque;
+            overflow: hidden;
+        }
+
+        .main,
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 520px;
+            height: 520px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .box {
+            width: 5%;
+            height: 5%;
+            border: none;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        .box .num {
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            color: gray;
+            font: 25px Arial;
+            transform: translate(calc(190px * sin(30deg * var(--i)) - 50%), calc(-190px * cos(30deg * var(--i)) - 50%));
+        }
+
+        .hr{
+            width: 450px;
+            height: 450px;
+            position: absolute;
+            border-radius: 50%;
+            transform: rotateX(180deg);
+        }
+        
+        .min,
+        .sec {
+            position: relative;
+            width: 150px;
+            height: 100px;
+            color: rgb(255, 255, 255);
+            font: 30px arial;
+            font-weight: bold;
+            display: flex;
+            margin: 10px;
+            justify-content: center;
+            align-items: center;
+            top: 0%;
+            left: 0%;
+            border: 10px ridge black;
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: rotateX(0deg) translate(0%, -75%);
+            border-radius: 0;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        .min::after{
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 0px;
+            border-top: 15px ridge black;
+            transform: translate(90px, 0px);
+        }
+
+        .hr::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            background-color: #7c9fbe;
+            transform: translate(-50%, -10%);
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .sm{
+            position: absolute;
+            height: 100px;
+            width: 200px;
+            top: 70%;
+            left: 50%;
+            z-index: 2;
+            border-top: 15px solid rgb(236, 180, 57);
+            transform: translate(-50%, -50%);
+            border-radius: 100px; 
+        }
+        .sm::before{
+            content: '';
+            position: absolute;
+            height: 90px;
+            width: 200px;
+            z-index: 2;
+            border-top: 10px solid rgb(236, 180, 57);
+            transform: translateY(10px);
+            border-top-left-radius: 35px; 
+            border-top-right-radius: 35px; 
+        }
+        .sm::after{
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 130px;
+            background-color: rgb(211, 212, 182);
+            border-right: 50px solid #f1b669;
+            border-left: 5px solid #817f7d;
+            transform: translate(-150px, -400px);
+        }
+        .smoke, .smoke1{
+            width: 100px;
+            height: 100px;
+            border-right: none;
+            border-left: 5px solid grey;
+            transform: translate(-200px, -355px);
+            border-radius: 50%;
+        }
+        .smoke1{
+            transform: translate(-200px, -400px);
+        }
+        .smoke:nth-child(odd){
+            border-left: none;
+            border-right: 5px solid grey;
+        }
+        .smoke1:nth-child(odd){
+            border-left: none;
+            border-right: 5px solid grey;
+        }
+        .d_all .dash {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 25px;
+            background-color: gray;
+            transform: translate(calc(225px * sin(30deg * var(--j)) - 50%), calc(-225px * cos(30deg * var(--j)) - 50%)) rotateZ(calc(30deg * var(--j)));
+        }
+    </style>
+</head>
+
+<body onload="run()">
+    <div class="sm">
+        <div class="smoke"></div>
+        <div class="smoke"></div>
+        <div class="smoke1"></div>
+        <div class="smoke1"></div>
+    </div>
+    <div class="main">
+        <div class="hr"></div>
+        <div class="min"></div>
+        <div class="sec"></div>
+    </div>
+    <div class="box">
+        <div class="num" style="--i:1;">1</div>
+        <div class="num" style="--i:2;">2</div>
+        <div class="num" style="--i:3;">3</div>
+        <div class="num" style="--i:4;">4</div>
+        <div class="num" style="--i:5;">5</div>
+        <div class="num" style="--i:6;">6</div>
+        <div class="num" style="--i:7;">7</div>
+        <div class="num" style="--i:8;">8</div>
+        <div class="num" style="--i:9;">9</div>
+        <div class="num" style="--i:10;">10</div>
+        <div class="num" style="--i:11;">11</div>
+        <div class="num" style="--i:12;">12</div>
+    </div>
+    <div class="d_all">
+        <div class="dash" style="--j: 1"></div>
+        <div class="dash" style="--j: 2"></div>
+        <div class="dash" style="--j: 3"></div>
+        <div class="dash" style="--j: 4"></div>
+        <div class="dash" style="--j: 5"></div>
+        <div class="dash" style="--j: 6"></div>
+        <div class="dash" style="--j: 7"></div>
+        <div class="dash" style="--j: 8"></div>
+        <div class="dash" style="--j: 9"></div>
+        <div class="dash" style="--j: 10"></div>
+        <div class="dash" style="--j: 11"></div>
+        <div class="dash" style="--j: 12"></div>
+        <div class="dash" style="--j: 13"></div>
+        <div class="dash" style="--j: 14"></div>
+        <div class="dash" style="--j: 15"></div>
+        <div class="dash" style="--j: 16"></div>
+        <div class="dash" style="--j: 17"></div>
+        <div class="dash" style="--j: 18"></div>
+        <div class="dash" style="--j: 19"></div>
+        <div class="dash" style="--j: 20"></div>
+        <div class="dash" style="--j: 21"></div>
+        <div class="dash" style="--j: 22"></div>
+        <div class="dash" style="--j: 23"></div>
+        <div class="dash" style="--j: 24"></div>
+        <div class="dash" style="--j: 25"></div>
+        <div class="dash" style="--j: 26"></div>
+        <div class="dash" style="--j: 27"></div>
+        <div class="dash" style="--j: 28"></div>
+        <div class="dash" style="--j: 29"></div>
+        <div class="dash" style="--j: 30"></div>
+        <div class="dash" style="--j: 31"></div>
+        <div class="dash" style="--j: 32"></div>
+        <div class="dash" style="--j: 33"></div>
+        <div class="dash" style="--j: 34"></div>
+        <div class="dash" style="--j: 35"></div>
+        <div class="dash" style="--j: 36"></div>
+        <div class="dash" style="--j: 37"></div>
+        <div class="dash" style="--j: 38"></div>
+        <div class="dash" style="--j: 39"></div>
+        <div class="dash" style="--j: 40"></div>
+        <div class="dash" style="--j: 41"></div>
+        <div class="dash" style="--j: 42"></div>
+        <div class="dash" style="--j: 43"></div>
+        <div class="dash" style="--j: 44"></div>
+        <div class="dash" style="--j: 45"></div>
+        <div class="dash" style="--j: 46"></div>
+        <div class="dash" style="--j: 47"></div>
+        <div class="dash" style="--j: 48"></div>
+        <div class="dash" style="--j: 49"></div>
+        <div class="dash" style="--j: 50"></div>
+        <div class="dash" style="--j: 51"></div>
+        <div class="dash" style="--j: 52"></div>
+        <div class="dash" style="--j: 53"></div>
+        <div class="dash" style="--j: 54"></div>
+        <div class="dash" style="--j: 55"></div>
+        <div class="dash" style="--j: 56"></div>
+        <div class="dash" style="--j: 57"></div>
+        <div class="dash" style="--j: 58"></div>
+        <div class="dash" style="--j: 59"></div>
+        <div class="dash" style="--j: 60"></div>
+    </div>
+    <script>
+        function run() {
+            setInterval(() => {
+                let sec = new Date().getSeconds()
+                let min = new Date().getMinutes()
+                let hr = new Date().getHours()
+                console.log(hr,min,sec)
+                document.querySelector('.sec').innerHTML = sec
+                document.querySelector('.min').innerHTML = min
+                // document.querySelector('.sec').style.transform='rotateZ('+6*sec+'deg) rotateX(180deg)'
+                // document.querySelector('.min').style.transform='rotateZ('+6*min+'deg) rotateX(180deg)'
+                document.querySelector('.hr').style.transform = 'rotateZ(' + 30 * hr + 'deg) rotateX(180deg)'
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

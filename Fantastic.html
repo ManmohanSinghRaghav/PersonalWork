@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Water</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        .content{
+            position: relative;
+        }
+        .content h2{
+            position: absolute;
+            color: #fff;
+            transform: translate(-50%,-50%);
+            font-size: 8em;
+        }
+        .content h2:nth-child(1){
+            color: transparent;
+            -webkit-text-stroke: 2px #03a9f4;
+        }
+        .content h2:nth-child(2){
+            color: #03a9f4;
+            animation: animate 3s ease-in-out infinite;
+        }
+        @keyframes animate{
+            0%, 100%{
+                clip-path: polygon(0 100%, 0 60%, 11% 53%, 25% 47%, 38% 49%, 48% 54%, 58% 62%, 69% 65%, 100% 68%, 100% 100%);
+            }
+            50%{
+                clip-path: polygon(0 100%, 0 62%, 27% 71%, 46% 71%, 57% 68%, 65% 61%, 74% 53%, 89% 49%, 100% 51%, 100% 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>Water</h2>
+        <h2>Water</h2>
+    </div>
+</body>
+</html>
